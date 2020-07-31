@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
@@ -7,6 +8,7 @@ const cors = require('cors');
 const router = require('./router/router');
 
 const config = require('./config');
+
 
 
 const app = express();
@@ -24,7 +26,6 @@ app.use((req, res, next) => {
   next();
 });
 
-//pre-flight requests
 app.options('*', cors());
 
 myServer.listen(port, (err) => {
@@ -38,9 +39,7 @@ myServer.listen(port, (err) => {
 app.use('/user', router);
 
 app.get('/', (err, res) => {
-  res.status(200);
-  res.json({ working: true });
-  res.end();
+	res.status(200).send('working: true');
 });
 
 module.exports = myServer;

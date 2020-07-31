@@ -19,7 +19,6 @@ function App() {
     const [ , token] = location.search.split('=');
     const localToken = JSON.parse(localStorage.userData).token
     if (token === localToken) {
-      console.log('да да это он');
       fetch('http://localhost:8080/user/activeUser', {
         method: 'POST',
         body: localStorage.userData,
@@ -29,6 +28,7 @@ function App() {
       })
     }
   }, [location]) 
+
 
   return (
     <div className="App">
